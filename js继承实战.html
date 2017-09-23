@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>js继承</title>
+    </head>
+    <body>
+    <div id="div1">hello</div>
+    <script>
+        function Elem(id){
+            this.elem = document.getElementById(id);
+        }
+        Elem.prototype.html = function(val){
+            var elem = this.elem;
+            if(val){
+                elem.innerHTML = val;
+                return this;//链式操作
+            }else{
+                return elem.innerHTML;
+            }
+        };
+        Elem.prototype.on = function(type,fn){
+            var elem = this.elem;
+            elem.addEventListener(type,fn);
+            return this;
+        };
+        var div1 = new Elem('div1');
+        div1.html('<h1>world</h1>').on('click',function(){
+            alert('haha')
+        })
+    </script>
+    </body>
+</html>
