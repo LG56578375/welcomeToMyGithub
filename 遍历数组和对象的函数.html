@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>可以遍历数组和对象的函数</title>
+    </head>
+    <body>
+    <script>
+
+       function forEach(obj,fn){
+           var key;
+           if(obj instanceof Array){
+               obj.forEach(function(item,index){
+                   fn(index,item);
+               })
+           }else{
+               for(key in obj){
+                   fn(key,obj[key])
+               }
+           }
+       }
+
+        var arr = [1,2,34,5,5,56];
+        forEach(arr,function(index,item){
+            console.log(index,item);
+        });
+        var obj = {x:100,y:200};
+        forEach(obj,function(key,value){
+           console.log(key,value)
+       });
+    </script>
+    </body>
+</html>
